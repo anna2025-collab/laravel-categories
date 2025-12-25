@@ -1,0 +1,23 @@
+@extends('layouts.notused')
+@section('content')
+    <div>
+        <div>
+            {{$post->id}}. {{$post->title}}
+        </div>
+        <div>
+            {{$post->content}}
+        </div>
+        <a href="{{route('post.edit',$post->id)}}">Edit</a>
+        <div>
+            <form action="{{route('post.delete',$post->id)}}" method="POST">
+                @csrf
+                @method('delete')
+                <input type="submit" value="Delete" class="btn btn-danger"></form>
+
+        </div>
+        <div>
+            <a href="{{route('post.index')}}">Back</a>
+        </div>
+    </div>
+@endsection
+
