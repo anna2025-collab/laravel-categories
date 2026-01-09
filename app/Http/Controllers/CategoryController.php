@@ -97,10 +97,8 @@ class CategoryController extends Controller
 
     public function destroy(int $id)
     {
-
         $category = Category::find($id);
         $category->delete();
-
         return redirect(route('categories.index'));
     }
 }
