@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\CategoryTag;
 use App\Models\Tag;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -11,10 +12,13 @@ class CategorySeeder extends Seeder
 
     public function run(): void
     {
-        Category::create([
+        $allTags = Tag::all();
+        $cat = Category::create([
             'name' => 'Новости',
             'description' => 'Категория, включающая любые новости.'
         ]);
+        $tags = $allTags->random(3);
+        $cat->tags()->sync($tags);
         Category::create([
             'name' => 'Спорт',
             'description' => 'Все спортивные события и материалы.',

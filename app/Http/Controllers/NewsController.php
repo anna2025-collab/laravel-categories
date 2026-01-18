@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsRequest;
 use App\Models\News;
+use App\Services\News\Service;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class NewsController extends BaseController
 {
     public function index()
     {
@@ -13,47 +15,38 @@ class NewsController extends Controller
 
         return view('news.index', compact('news'));
     }
+
     public function create()
     {
         return view('news.create');
     }
-    public function store(Request $request)
+
+    public function store(NewsRequest $request)
     {
-        $data = $request->validate([
-            'current_news' => 'required|string',
-            'old_news'     => 'nullable|string',
-        ]); News::create([
-        'current_news' => $data['current_news'],
-        'old_news'     => $data['old_news'] ?? '',
-        'likes'        => 0,
-        'dislikes'     => 0,
-        'comments'     => json_encode([]),
-    ]);
+        $data = $request->validated();
+        $this->service->store($data);
 
         return redirect()->route('news.index');
     }
+
     public function show(News $news)
     {
         return view('news.show', compact('news'));
     }
+
     public function edit(News $news)
     {
         return view('news.edit', compact('news'));
     }
-    public function update(Request $request, News $news)
-    {
-        $data = $request->validate([
-            'current_news' => 'required|string',
-            'old_news'     => 'nullable|string',
-        ]);
 
-        $news->update([
-            'current_news' => $data['current_news'],
-            'old_news'     => $data['old_news'] ?? '',
-        ]);
+    public function update(NewsRequest $request, News $news)
+    {
+        $data = $request->validated();
+        $this->service->update($data, $news);
 
         return redirect()->route('news.index');
     }
+
     public function destroy(News $news)
     {
         $news->delete();
@@ -61,23 +54,19 @@ class NewsController extends Controller
         return redirect()->route('news.index');
     }
 
-        public function like($id)
+    public function like($id)
     {
-        $news = News::findOrFail($id);
-
-        $news->likes++;
-        $news->save();
+       $this->service->like($id);
 
         return back();
     }
 
 
-
-
     public function dislike(News $news)
     {
-        $news->increment('dislikes');
-        return redirect()->back();
+        $this->service->dislike($news);
+
+        return back();
     }
 
 }
