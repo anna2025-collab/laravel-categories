@@ -11,7 +11,7 @@ class NewsController extends BaseController
 {
     public function index()
     {
-        $news = News::orderBy('created_at', 'desc')->get();
+        $news = News::orderBy('created_at', 'desc')->paginate(3);
 
         return view('news.index', compact('news'));
     }
@@ -56,7 +56,7 @@ class NewsController extends BaseController
 
     public function like($id)
     {
-       $this->service->like($id);
+        $this->service->like($id);
 
         return back();
     }

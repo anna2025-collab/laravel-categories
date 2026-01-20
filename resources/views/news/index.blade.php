@@ -83,5 +83,7 @@
 
         </div>
     @endforeach
-
+    <div class="mt-8 flex justify-center">
+        {{ $news->links() }}
+    </div>
 @endsection

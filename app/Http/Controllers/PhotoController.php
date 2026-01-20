@@ -12,7 +12,7 @@ class PhotoController extends Controller
 
     public function index()
     {
-        $photos = Photo::all();
+        $photos = Photo::paginate(6);
 
         return view('photo.index', compact('photos'));
     }

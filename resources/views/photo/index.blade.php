@@ -3,6 +3,7 @@
 
 @section('content')
     <div class="max-w-8xl mx-auto px-6 py-8">
+
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold">Галерея фотографий</h1>
             <a href="{{ route('photo.create') }}"
@@ -14,11 +15,13 @@
         @if($photos->isEmpty())
             <p class="text-gray-600">Фотографий пока нет.</p>
         @else
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
                 @foreach($photos as $photo)
-                    <div class="bg-blue-100 rounded-xl shadow-lg p-6 flex flex-col justify-between min-h-[240px] w-full box-border hover:shadow-2xl transition">
+                    <div
+                        class="bg-blue-100 rounded-xl shadow-lg p-6 flex flex-col justify-between min-h-[240px] w-full box-border hover:shadow-2xl transition">
+
                         <div>
-                            <!-- Добавлен номер фотографии -->
                             <h2 class="text-xl font-semibold mb-2 text-blue-800">
                                 #{{ $photo->id }} - {{ $photo->title }}
                             </h2>
@@ -44,9 +47,15 @@
                                 </button>
                             </form>
                         </div>
+
                     </div>
                 @endforeach
             </div>
+            {{-- Пагинация снизу --}}
+            <div class="mt-8 flex justify-center">
+                {{ $photos->links() }}
+            </div>
+
         @endif
     </div>
 @endsection

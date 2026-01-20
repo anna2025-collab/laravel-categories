@@ -60,5 +60,7 @@
 
         </div>
     @endforeach
-
+    <div class="mt-8 flex justify-center">
+        {{ $categories->links() }}
+    </div>
 @endsection
