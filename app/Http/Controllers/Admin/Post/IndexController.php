@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Post;
+
+use App\Http\Controllers\Controller;
+use App\Models\News;
+use App\Models\Post;
+
+class IndexController extends Controller
+{
+    public function index()
+    {
+
+        $posts = Post::all();
+
+        return view('admin.post', compact('posts'));
+
+    }
+//
+//    public function create()
+//    {
+//        return view('post.create');
+//    }
+//
+//    public function store()
+//    {
+//        $data = request()->validate([
+//            'title' => 'string',
+//            'content' => 'string',
+//            'likes' => 'integer',
+//            'dislikes' => 'integer',
+//        ]);
+//        Post::create($data);
+//        return redirect()->route('post.index');
+//    }
+//
+//    public function show(Post $post)
+//    {
+//
+//        return view('post.show', compact('post'));
+//    }
+//
+//    public function edit(Post $post)
+//    {
+//
+//        return view('post.edit', compact('post'));
+//    }
+//
+//    public function update(Post $post)
+//    {
+//        $data = request()->validate([
+//            'title' => 'string',
+//            'content' => 'string',
+//            'likes' => 'integer',
+//            'dislikes' => 'integer',
+//        ]);
+//        $post->update($data);
+//        return redirect()->route('post.show', $post->id);
+//    }
+//
+//    public function destroy(Post $post)
+//    {
+//        $post->delete();
+//        return redirect()->route('post.index');
+//    }
+
+
+}
