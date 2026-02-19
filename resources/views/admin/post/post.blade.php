@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('content')
     <div class="ps-4 pt-2">
-    <div>
         <div>
             <a href="{{route('post.create')}}" class="btn btn-outline-primary mb-3">>Add one</a>
         </div>
@@ -15,7 +15,4 @@
         @endforeach
 
     </div>
-    </div>
 @endsection
-
-

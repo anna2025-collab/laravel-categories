@@ -13,7 +13,7 @@ class IndexController extends Controller
 
         $posts = Post::all();
 
-        return view('admin.post', compact('posts'));
+        return view('admin.post.post', compact('posts'));
 
     }
 //

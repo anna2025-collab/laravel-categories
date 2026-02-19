@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\Post\IndexController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MainController;
@@ -65,7 +66,6 @@ Route::delete('/categories/{categories}', [CategoryController::class, 'destroy']
 
 
 
-
 Route::get('/posts/update', [MyPostController::class, 'updatingstring']);
 Route::get('/posts/delete', [MyPostController::class, 'delete']);
 Route::get('/posts/first_or_create', [MyPostController::class, 'firstOrCreate']);
@@ -75,3 +75,4 @@ Route::get('/main', [MainController::class, 'main'])->name('main.index');
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact.index');
 Route::get('/about', [AboutController::class, 'about'])->name('about.index');
 
+Route::get('/admin/post', [IndexController::class, 'index'])->name('admin.post.index');
