@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title', 'Редактировать новость')
 
@@ -40,5 +40,5 @@
             Обновить
         </button>
     </form>
-1
+    1
 @endsection

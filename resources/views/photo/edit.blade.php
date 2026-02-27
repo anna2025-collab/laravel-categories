@@ -1,5 +1,4 @@
-
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title', 'Редактировать #' . $photo->id)
 
@@ -51,7 +50,7 @@
 
                     @foreach($categories as $category)
                         <option {{$category->id === $photo->category_id ? 'selected' : ''}}
-                            value="{{ $category->id }}">
+                                value="{{ $category->id }}">
                             {{ $category->name }}
                         </option>
                     @endforeach

@@ -1,5 +1,4 @@
-
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title', 'Фотография #' . $photo->id)
 
@@ -34,15 +33,15 @@
             <span class="font-semibold">Путь: {{ $photo->path }}</span>
         </div>
 
-    <div class="bg-blue-100 text-gray-800 p-4 rounded shadow flex items-center gap-2">
+        <div class="bg-blue-100 text-gray-800 p-4 rounded shadow flex items-center gap-2">
             <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M3 16l3-3 4 4 8-8 3 3"/>
             </svg>
-        <span class="font-semibold">Категория:
+            <span class="font-semibold">Категория:
         @if($photo->category)
-            {{ $photo->category->name }}
-        @endif
+                    {{ $photo->category->name }}
+                @endif
         </span>
         </div>
     </div>

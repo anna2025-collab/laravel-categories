@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title', "Редактирование: $category->name")
 
@@ -55,19 +55,22 @@
             <a href="{{ route('categories.show', $category->id) }}"
                class="px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 transition">
                 Назад
-            </a> <div class="form-group">
+            </a>
+            <div class="form-group">
                 <label class="block font-semibold text-blue-800 mb-1">
                     Тэги
                 </label>
 
-                <select multiple class="form-select w-full p-3 rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-400" id="tags" name="tags[]">
+                <select multiple
+                        class="form-select w-full p-3 rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        id="tags" name="tags[]">
                     <option disabled> Выберите теги</option>
                     @foreach($tags as $tag)
 
                         <option @foreach($category->tags as $tagCat)
-                            {{$tag->id == $tagCat->id?'selected':''}}
-                      @endforeach
-                            value="{{ $tag->id }}">
+                                    {{$tag->id == $tagCat->id?'selected':''}}
+                                @endforeach
+                                value="{{ $tag->id }}">
                             {{ $tag->title }}
                         </option>
                     @endforeach

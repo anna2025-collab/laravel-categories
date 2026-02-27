@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.project')
 @section('title', 'Список фотографий')
 
 @section('content')
@@ -19,7 +19,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
                 @foreach($photos as $photo)
                     <div
-                        class="bg-blue-100 rounded-xl shadow-lg p-6 flex flex-col justify-between min-h-[240px] w-full box-border hover:shadow-2xl transition">
+                            class="bg-blue-100 rounded-xl shadow-lg p-6 flex flex-col justify-between min-h-[240px] w-full box-border hover:shadow-2xl transition">
 
                         <div>
                             <h2 class="text-xl font-semibold mb-2 text-blue-800">

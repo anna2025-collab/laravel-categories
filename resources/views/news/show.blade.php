@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title', $news->current_news)
 
@@ -13,7 +13,7 @@
         <form action="{{ route('news.like', $news->id) }}" method="POST">
             @csrf
             <button
-                class="w-12 h-12 rounded-full flex items-center justify-center text-2xl text-green-800
+                    class="w-12 h-12 rounded-full flex items-center justify-center text-2xl text-green-800
                        bg-green-100 hover:bg-green-300 active:bg-green-400
                        border border-green-600 transition select-none">
                 👍
@@ -26,7 +26,7 @@
         <form action="{{ route('news.dislike', $news->id) }}" method="POST">
             @csrf
             <button
-                class="w-12 h-12 rounded-full flex items-center justify-center text-2xl text-red-800
+                    class="w-12 h-12 rounded-full flex items-center justify-center text-2xl text-red-800
                        bg-red-100 hover:bg-red-300 active:bg-red-400
                        border border-red-600 transition select-none">
                 👎
@@ -64,8 +64,8 @@
             @csrf
             @method('DELETE')
             <button
-                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                onclick="return confirm('Удалить новость?')">
+                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                    onclick="return confirm('Удалить новость?')">
                 Удалить
             </button>
         </form>

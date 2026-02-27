@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title','Создание категории')
 
@@ -20,7 +20,7 @@
                    class="w-full border px-3 py-2 rounded">
 
             @error('name')
-             <p class="text-red-500">{{$message}}</p> @enderror
+            <p class="text-red-500">{{$message}}</p> @enderror
         </div>
 
         <div class="mb-4">
@@ -41,10 +41,10 @@
             <select multiple
                     class="form-select w-full p-3 rounded shadow"
                     name="tags[]">
-                <option  disabled> Выберите теги</option>
+                <option disabled> Выберите теги</option>
                 @foreach($tags as $tag)
                     <option value="{{ $tag->id }}"
-                        {{ in_array($tag->id, old('tags', [])) ? 'selected' : '' }} >
+                            {{ in_array($tag->id, old('tags', [])) ? 'selected' : '' }} >
                         {{ $tag->title }}
                     </option>
                 @endforeach

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.project')
 
 @section('title', "Категория: $categories->name")
 
@@ -41,8 +41,8 @@
             @csrf
             @method('DELETE')
             <button
-                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                onclick="return confirm('Удалить категорию?')">
+                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                    onclick="return confirm('Удалить категорию?')">
                 Удалить
             </button>
         </form>
