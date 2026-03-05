@@ -13,7 +13,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Middleware\AdminPanelMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('home.index');
 
 Route::get('/posts', [MyPostController::class, 'index'])->name('post.index');
 Route::get('/posts/create', [MyPostController::class, 'create'])->name('post.create');
@@ -77,13 +77,12 @@ Route::get('/about', [AboutController::class, 'about'])->name('about.index');
 
 Route::get('/admin/post', [IndexController::class, 'index'])->name('admin.post.index');
 
-Route::prefix('/admin')->middleware('admin')->name('admin.')->group(function () {
-    Route::get('/post', [IndexController::class,'index'])->name('post.index');});
+//Route::prefix('/admin')->middleware(AdminPanelMiddleware::class)->name('admin.')->group(function () {
+    Route::get('/post', [IndexController::class,'index'])->name('post.index');
+//});
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 
 Auth::routes();
 

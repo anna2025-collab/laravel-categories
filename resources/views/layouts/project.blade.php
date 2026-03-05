@@ -1,5 +1,4 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -18,19 +17,24 @@
             {{-- Кнопка "Все фото" --}}
             <a href="{{ route('photo.index') }}"
                class="text-gray-700 hover:underline">
-                 Фото
+                Фото
             </a>
 
             {{-- Новая кнопка "Все новости" --}}
             <a href="{{ route('news.index') }}"
                class="text-gray-700 hover:underline">
-                 Новости
+                Новости
             </a>
             <a href="{{ route('categories.index') }}"
                class="text-gray-700 hover:underline">
                 Категории
             </a>
-
+            @can('view',auth()->user())
+            <a href="{{ route('admin.post.index') }}"
+               class="text-gray-700 hover:underline">
+                admin
+            </a>
+            @endcan
         </div>
     </div>
 </nav>
