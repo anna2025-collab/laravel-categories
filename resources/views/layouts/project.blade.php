@@ -29,6 +29,15 @@
                class="text-gray-700 hover:underline">
                 Категории
             </a>
+
+            @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="text-gray-700 hover:underline">
+                        {{ auth()->user()->name }} (Выйти)
+                    </button>
+                </form>
+            @endauth
             @can('view',auth()->user())
             <a href="{{ route('admin.post.index') }}"
                class="text-gray-700 hover:underline">
