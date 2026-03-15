@@ -77,9 +77,9 @@ Route::get('/about', [AboutController::class, 'about'])->name('about.index');
 
 Route::get('/admin/post', [IndexController::class, 'index'])->name('admin.post.index');
 
-//Route::prefix('/admin')->middleware(AdminPanelMiddleware::class)->name('admin.')->group(function () {
+Route::prefix('/admin')->middleware(AdminPanelMiddleware::class)->name('admin.')->group(function () {
     Route::get('/post', [IndexController::class,'index'])->name('post.index');
-//});
+});
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
