@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\Post\IndexController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -19,3 +20,16 @@ Route::get('/photos/{photo}', [PhotoController::class, 'show']);;
 Route::delete('/photos/{photo}', [PhotoController::class, 'destroy']);
 Route::put('/photos/{photo}', [PhotoController::class, 'update']);
 
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login',[AuthController::class,'login'] );
+    Route::post('logout', [AuthController::class,'logout']);
+    Route::post('refresh', [AuthController::class,'refresh']);
+    Route::post('me', [AuthController::class,'me']);
+
+});

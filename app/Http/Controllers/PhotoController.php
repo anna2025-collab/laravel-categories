@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PhotoResource;
 use App\Models\Category;
 use App\Models\Photo;
 use App\Models\Tag;
@@ -12,8 +13,8 @@ class PhotoController extends Controller
 
     public function index()
     {
-        $photos = Photo::paginate(6);
-
+        $photos = Photo::paginate();
+        // return PhotoResource::collection($photos);
         return view('photo.index', compact('photos'));
     }
 
@@ -21,9 +22,9 @@ class PhotoController extends Controller
     public function create()
     {
         $categories = Category::all();
-         $tags=Tag::all();
+        $tags = Tag::all();
 
-        return view('photo.create', compact('categories','tags'));
+        return view('photo.create', compact('categories', 'tags'));
     }
 
 
@@ -67,6 +68,8 @@ class PhotoController extends Controller
 
         ]);
         $photo->update($data);
+
+//return new PhotoResource($photo);
         return redirect()->route('photo.show', $photo);
     }
 
