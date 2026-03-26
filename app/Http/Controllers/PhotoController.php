@@ -73,8 +73,9 @@ class PhotoController extends Controller
 
         ]);
         $photo->update($data);
+
         return new PhotoResource($photo);
-      //  return redirect()->route('photo.show', $photo);
+       // return redirect()->route('photo.show', $photo);
     }
 
 
