@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePhotoRequest;
 use App\Http\Resources\PhotoResource;
 use App\Models\Category;
 use App\Models\Photo;
 use App\Models\Tag;
+use App\Services\Photos\PhotoService;
 use Illuminate\Http\Request;
 
 class PhotoController extends Controller
 {
-
+  public PhotoService $photoService;
+    public function __construct(PhotoService $photoService)
+    {
+        $this->photoService = $photoService;
+    }
     public function index()
     {
+
         $photos = Photo::paginate();
         // return PhotoResource::collection($photos);
         return view('photo.index', compact('photos'));
@@ -28,23 +35,21 @@ class PhotoController extends Controller
     }
 
 
-    public function store(Request $data)
+    public function store(StorePhotoRequest $request)
     {
-        $data = request()->validate([
-            'title' => 'string',
-            'description' => 'string',
-            'path' => 'string',
-            'category_id' => 'integer'
+//        $data = $request->validated();
+//        $photo=$this->photoService->storePhoto($data);
+//        Photo::create($photo);
+//        return redirect()->route('photo.index');
+        $this->photoService->storePhoto($request->validated());
 
-        ]);
-
-        Photo::create($data);
         return redirect()->route('photo.index');
     }
 
 
     public function show(Photo $photo)
     {
+//        return new PhotoResource($photo);
         return view('photo.show', compact('photo'));
     }
 
@@ -68,9 +73,8 @@ class PhotoController extends Controller
 
         ]);
         $photo->update($data);
-
-//return new PhotoResource($photo);
-        return redirect()->route('photo.show', $photo);
+        return new PhotoResource($photo);
+      //  return redirect()->route('photo.show', $photo);
     }
 
 

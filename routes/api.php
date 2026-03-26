@@ -27,9 +27,18 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login',[AuthController::class,'login'] );
-    Route::post('logout', [AuthController::class,'logout']);
-    Route::post('refresh', [AuthController::class,'refresh']);
-    Route::post('me', [AuthController::class,'me']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
 
+});
+Route::middleware('jwt.auth')->group(function () {
+    Route::get('/photos', [PhotoController::class, 'index']);
+    Route::get('/photos/create', [PhotoController::class, 'create']);
+    Route::post('/photos', [PhotoController::class, 'store']);
+    Route::get('/photos/{photo}/edit', [PhotoController::class, 'edit']);
+    Route::put('/photos/{photo}', [PhotoController::class, 'update']);
+    Route::delete('/photos/{photo}', [PhotoController::class, 'destroy']);
+    Route::get('/photos/{photo}', [PhotoController::class, 'show']);
 });
